@@ -19,4 +19,4 @@ Add values to application.properties file:
 ```properties sample
 spring.security.client.id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 spring.security.client.secret=Zm9vYmFyMjM1Pz8pX19lbmNyeXB0
-spring.security.jwt.secret=aGVsbG9zdGFrZXRoZXNlY3JldGZvcnlvdXJhcHBsaWNhdGlvbg
+spring.security.jwt.secret=aGVsbG9zdGFrZXRoZXNlY3JldGZvcnlvdXJhcHBsaWNhdGlvbg# BankingService
