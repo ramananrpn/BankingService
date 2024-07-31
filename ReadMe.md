@@ -20,3 +20,16 @@ Add values to application.properties file:
 spring.security.client.id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 spring.security.client.secret=Zm9vYmFyMjM1Pz8pX19lbmNyeXB0
 spring.security.jwt.secret=aGVsbG9zdGFrZXRoZXNlY3JldGZvcnlvdXJhcHBsaWNhdGlvbg# BankingService
+```
+
+# Running the Application with Docker
+## Running the Docker Containers
+
+Docker files are added to /dockerfiles directory. The docker-compose.yml file is used to define and run multi-container Docker applications.
+
+Build the Docker Image: Run the following command to build your Docker image for the banking service:
+
+`docker-compose build`
+
+## Start the Containers: Start your containers using the following command:
+`docker-compose up`

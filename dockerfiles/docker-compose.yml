@@ -1,24 +1,39 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: mysql
+  banking-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: banking-service
+    ports:
+      - "8080:8080"
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: bankingdb
-      MYSQL_USER: bankinguser
-      MYSQL_PASSWORD: bankingpass
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/bankingdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: banking_db
     volumes:
       - mysql_data:/var/lib/mysql
-    networks:
-      - banking-network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
 
 volumes:
   mysql_data:
-
-networks:
-  banking-network:
-    driver: bridge
